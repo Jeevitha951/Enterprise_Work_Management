@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectUsers, createUser, deleteUser, toggleUserStatus } from '../store/usersSlice.js'
 
 export default function UsersPage() {
+  // Provide default empty object to avoid destructure errors
   const { users = [], currentUser = {} } = useSelector(selectUsers) || {}
   const dispatch = useDispatch()
 
@@ -14,11 +15,7 @@ export default function UsersPage() {
     const name = prompt('Enter Name')
     const email = prompt('Enter Email')
     const role = prompt('Enter Role (Admin/Manager/Employee)') || 'Employee'
-    if (name && email) {
-      dispatch(createUser({ name, email, role }))
-    } else {
-      alert("Name and Email are required")
-    }
+    if (name && email) dispatch(createUser({ name, email, role }))
   }
 
   return (
@@ -43,37 +40,36 @@ export default function UsersPage() {
             </tr>
           </thead>
           <tbody>
-            {users.length > 0 ? (
-              users.map(u => (
-                <tr key={u.id} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900">
-                  <td className="p-3">{u.name}</td>
-                  <td className="p-3">{u.email}</td>
-                  <td className="p-3">{u.role}</td>
-                  <td className="p-3">{u.lastActive ? new Date(u.lastActive).toLocaleString() : '-'}</td>
-                  <td className="p-3 flex items-center gap-2">
-                    {u.status || '-'}
-                    {currentUser?.role === "Admin" && (
-                      <button 
-                        className="btn-secondary text-xs"
-                        onClick={() => dispatch(toggleUserStatus(u.id))}
-                      >
-                        Toggle
-                      </button>
-                    )}
-                  </td>
-                  <td className="p-3 text-right">
-                    {currentUser?.role === "Admin" && (
-                      <button 
-                        className="btn-secondary text-xs"
-                        onClick={() => dispatch(deleteUser(u.id))}
-                      >
-                        Delete
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))
-            ) : (
+            {users.map(u => (
+              <tr key={u.id} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900">
+                <td className="p-3">{u.name}</td>
+                <td className="p-3">{u.email}</td>
+                <td className="p-3">{u.role}</td>
+                <td className="p-3">{u.lastActive ? new Date(u.lastActive).toLocaleString() : '-'}</td>
+                <td className="p-3 flex items-center gap-2">
+                  {u.status || '-'}
+                  {currentUser?.role === "Admin" && (
+                    <button 
+                      className="btn-secondary text-xs"
+                      onClick={() => dispatch(toggleUserStatus(u.id))}
+                    >
+                      Toggle
+                    </button>
+                  )}
+                </td>
+                <td className="p-3 text-right">
+                  {currentUser?.role === "Admin" && (
+                    <button 
+                      className="btn-secondary text-xs"
+                      onClick={() => dispatch(deleteUser(u.id))}
+                    >
+                      Delete
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+            {users.length === 0 && (
               <tr>
                 <td colSpan="6" className="p-3 text-center text-gray-500">No users found</td>
               </tr>
