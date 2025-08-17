@@ -36,11 +36,11 @@ npm test
 src/
  - components/       # Layout, ThemeToggle
  - hooks/            # useBootstrapData
-  pages/            # Login, Dashboard, Projects, ProjectDetail, Users, Reports, Settings
-  routes/           # ProtectedRoute, RoleGuard
-  store/            # auth, projects, tasks, users, notifications
-  utils/            # mockApi (localStorage-based)
-  styles/           # Tailwind index.css
+ - pages/            # Login, Dashboard, Projects, ProjectDetail, Users, Reports, Settings
+ - routes/           # ProtectedRoute, RoleGuard
+ - store/            # auth, projects, tasks, users, notifications
+ - utils/            # mockApi (localStorage-based)
+ - styles/           # Tailwind index.css
 
 ## Deployment
 - Build: `npm run build`
