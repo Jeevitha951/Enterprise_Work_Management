@@ -1,4 +1,4 @@
-# Enterprise Work Management System (Frontend Only)
+# Enterprise Work Management System 
 
 Vite + React demo implementing auth, roles, projects & tasks with Kanban, reporting, real-time notifications (mock), theming, and testing.
 
@@ -14,21 +14,18 @@ Vite + React demo implementing auth, roles, projects & tasks with Kanban, report
 - Jest + React Testing Library
 
 ## Getting Started
-```bash
-# install
-npm i
+# Create React App using vite tool
+npm craete vite@latest ewms-frontend
+cd ewms-frontend
+
+# Install node modules
+npm install
 
 # run dev
 npm run dev
 
 # tests
 npm test
-```
-
-## Demo Credentials
-- `admin@acme.com` (Admin) / `1234`
-- `manager@acme.com` (Manager) / `1234`
-- `dev@acme.com` (Employee) / `1234`
 
 ## Notes
 - This is **frontend only**. `src/utils/mockApi.js` simulates a backend using `localStorage` with small delays.
@@ -36,7 +33,6 @@ npm test
 - WebSocket notifications are simulated via a timer in `notificationsSlice.startRealtime`.
 
 ## Structure (major)
-```
 src/
   components/       # Layout, ThemeToggle
   hooks/            # useBootstrapData
@@ -45,14 +41,11 @@ src/
   store/            # auth, projects, tasks, users, notifications
   utils/            # mockApi (localStorage-based)
   styles/           # Tailwind index.css
-```
 
 ## Deployment
 - Build: `npm run build`
 - Host the `dist/` folder on Vercel/Netlify (SPA with fallback to `index.html`).
 
 ## Libraries Used
-See `package.json`.
 
-## Screenshots
-Add after you run the app locally.
+
