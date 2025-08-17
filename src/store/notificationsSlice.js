@@ -12,8 +12,7 @@ const slice = createSlice({
   }
 })
 
-// ❌ removed `export const { push } = slice.actions`
-const { push } = slice.actions  // keep private
+const { push } = slice.actions  
 
 export const selectNotifications = (s) => s.notifications
 

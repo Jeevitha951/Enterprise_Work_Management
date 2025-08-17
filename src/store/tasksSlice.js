@@ -1,8 +1,6 @@
-// src/store/tasksSlice.js
 import { createSlice, createAsyncThunk, nanoid } from '@reduxjs/toolkit'
 import { api } from '../utils/mockApi.js'
 
-// Async fetch
 export const fetchTasks = createAsyncThunk('tasks/fetch', api.getTasks)
 
 const slice = createSlice({
@@ -53,7 +51,7 @@ const slice = createSlice({
       const { taskId, text } = action.payload
       const t = state.tasks.find(t => String(t.id) === String(taskId))
       if (t) {
-        if (!t.comments) t.comments = []   // Initialize if undefined
+        if (!t.comments) t.comments = []   
         t.comments.push({ id: nanoid(), text, time: Date.now() })
       }
     },
@@ -61,7 +59,7 @@ const slice = createSlice({
       const { taskId, file } = action.payload
       const t = state.tasks.find(t => String(t.id) === String(taskId))
       if (t) {
-        if (!t.attachments) t.attachments = []  // Initialize if undefined
+        if (!t.attachments) t.attachments = []  
         t.attachments.push({ id: nanoid(), file, time: Date.now() })
       }
     }

@@ -16,7 +16,6 @@ test('renders login page for unauthenticated users', () => {
 })
 
 test('renders dashboard when authenticated', async () => {
-  // Mock login state
   store.dispatch({ type: 'auth/login/fulfilled', payload: { user: { id:1, name:'Test', role:'Employee', email:'test@test.com' }, token:'abc' } })
 
   render(

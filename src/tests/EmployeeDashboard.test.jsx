@@ -4,7 +4,6 @@ import { store } from '../store/store.js'
 import { MemoryRouter } from 'react-router-dom'
 import EmployeeDashboard from '../pages/EmployeeDashboard.jsx'
 
-// Mock Redux slices
 jest.mock('../store/tasksSlice', () => ({
   selectTasks: () => ({
     tasks: [

@@ -1,8 +1,6 @@
-// src/store/projectsSlice.js
 import { createSlice, createAsyncThunk, nanoid } from '@reduxjs/toolkit'
 import { api } from '../utils/mockApi.js'
 
-// Async thunks
 export const fetchProjects = createAsyncThunk('projects/fetch', api.getProjects)
 export const createProject = createAsyncThunk('projects/create', async (data) => api.createProject(data))
 
@@ -10,7 +8,6 @@ const slice = createSlice({
   name: 'projects',
   initialState: { projects: [], status: 'idle' },
   reducers: {
-    // ✅ Local project CRUD
     updateProject(state, action) {
       const { id, changes } = action.payload
       const p = state.projects.find(p => String(p.id) === String(id))
@@ -34,7 +31,6 @@ const slice = createSlice({
         p.members = p.members.filter(u => u !== userId)
       }
     },
-    // ✅ If you still want to create tasks tied to projects
     addTaskToProject: {
       reducer(state, action) {
         const { projectId, task } = action.payload

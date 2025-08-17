@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Dashboard from '../pages/Dashboard.jsx';
 
-// Mock child components to simplify testing
 jest.mock('../pages/AdminDashboard.jsx', () => () => <div>Admin Dashboard</div>);
 jest.mock('../pages/ManagerDashboard.jsx', () => () => <div>Manager Dashboard</div>);
 jest.mock('../pages/EmployeeDashboard.jsx', () => () => <div>Employee Dashboard</div>);

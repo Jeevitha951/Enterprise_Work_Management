@@ -38,7 +38,7 @@ export default function ReportsPage() {
       <div className="card p-4">
         <h3 className="font-medium mb-2">Export</h3>
         <p className="text-sm opacity-80">
-          In this frontend-only demo, exporting would call the backend. You can still copy data from the charts above.
+          In this frontend-only demo, exporting would call the backend.
         </p>
       </div>
     </div>

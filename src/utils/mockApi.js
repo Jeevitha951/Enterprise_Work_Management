@@ -1,4 +1,3 @@
-// Super-light mock API using localStorage for persistence.
 const LSK = 'ewms_mock_db_v1'
 const sleep = (ms)=>new Promise(r=>setTimeout(r, ms))
 
@@ -41,7 +40,7 @@ export const api = {
     return { token: db.session.token, user }
   },
 
-  async signup({ name, email, password, role }){   // 👈 accept role
+  async signup({ name, email, password, role }){   
     await sleep(800)
     const db = read()
     const existing = db.users.find(u=>u.email === email)
@@ -52,7 +51,7 @@ export const api = {
       name,
       email,
       password,
-      role: role || 'Employee',   // 👈 use selected role, fallback to Employee
+      role: role || 'Employee',   
       lastActive: Date.now(),
       status: 'Active'
     }

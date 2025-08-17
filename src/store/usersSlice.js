@@ -1,19 +1,16 @@
 import { createSlice, createAsyncThunk, nanoid } from '@reduxjs/toolkit'
 import { api } from '../utils/mockApi.js'
 
-// Async fetch users from mock API
 export const fetchUsers = createAsyncThunk('users/fetch', api.getUsers)
 
 const slice = createSlice({
   name: 'users',
   initialState: { users: [], status: 'idle', currentUser: null },  
   reducers: {
-    // Login (set the current user in slice)
     setCurrentUser(state, action) {
       state.currentUser = action.payload
     },
 
-    // Create user (Admin-only)
     createUser: {
       reducer(state, action) {
         if (state.currentUser?.role !== "Admin") return
@@ -33,7 +30,6 @@ const slice = createSlice({
       }
     },
 
-    // Update user (Admin-only)
     updateUser(state, action) {
       if (state.currentUser?.role !== "Admin") return
       const { id, changes } = action.payload
@@ -44,13 +40,11 @@ const slice = createSlice({
       }
     },
 
-    // Delete user (Admin-only)
     deleteUser(state, action) {
       if (state.currentUser?.role !== "Admin") return
       state.users = state.users.filter(u => u.id !== action.payload)
     },
 
-    // Mark user activity (self updates)
     markActivity(state, action) {
       const user = state.users.find(u => u.id === action.payload)
       if (user) {
@@ -58,7 +52,6 @@ const slice = createSlice({
       }
     },
 
-    // Toggle user status (Admin-only)
     toggleUserStatus(state, action) {
       if (state.currentUser?.role !== "Admin") return
       const user = state.users.find(u => u.id === action.payload)

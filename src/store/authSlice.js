@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { api } from '../utils/mockApi.js'
 import { toast } from 'react-toastify'
 
-// LOGIN
 export const login = createAsyncThunk('auth/login', async (cred, { rejectWithValue }) => {
   try { 
     return await api.login(cred) 
@@ -11,7 +10,6 @@ export const login = createAsyncThunk('auth/login', async (cred, { rejectWithVal
   }
 })
 
-// SIGNUP
 export const signup = createAsyncThunk('auth/signup', async (data, { rejectWithValue }) => {
   try { 
     return await api.signup(data) 
@@ -44,23 +42,21 @@ const slice = createSlice({
   },
   extraReducers: (b)=> {
     b
-    // LOGIN
     .addCase(login.pending, (s)=>{ s.status = 'loading'; s.error=null })
     .addCase(login.fulfilled, (s, a)=>{ 
       s.status='succeeded'; 
-      // Ensure role is saved
+ 
       s.user = { 
         id: a.payload.user.id, 
         name: a.payload.user.name, 
         email: a.payload.user.email, 
-        role: a.payload.user.role || "Employee"   // default to Employee
+        role: a.payload.user.role || "Employee"   
       }
       s.token=a.payload.token
       s.isAuthenticated=true
     })
     .addCase(login.rejected, (s,a)=>{ s.status='failed'; s.error=a.payload || 'Login failed' })
 
-    // SIGNUP
     .addCase(signup.pending, (s)=>{ s.status = 'loading'; s.error=null })
     .addCase(signup.fulfilled, (s, a)=>{ 
       s.status='succeeded'; 
@@ -68,7 +64,7 @@ const slice = createSlice({
         id: a.payload.user.id, 
         name: a.payload.user.name, 
         email: a.payload.user.email, 
-        role: a.payload.user.role || "Employee"   // role from signup form
+        role: a.payload.user.role || "Employee"   
       }
       s.token=a.payload.token
       s.isAuthenticated=true 
@@ -76,7 +72,6 @@ const slice = createSlice({
     })
     .addCase(signup.rejected, (s,a)=>{ s.status='failed'; s.error=a.payload || 'Signup failed' })
 
-    // SESSION (restore role too)
     .addCase(fetchSession.fulfilled, (s,a)=>{ 
       if(a.payload){ 
         s.user = { 
@@ -90,13 +85,11 @@ const slice = createSlice({
       } 
     })
 
-    // PROFILE
     .addCase(updateProfile.fulfilled, (s,a)=>{ 
       s.user = { ...s.user, ...a.payload } 
       toast.success('Profile updated') 
     })
 
-    // PASSWORD
     .addCase(changePassword.fulfilled, ()=>{ toast.success('Password changed') })
     .addCase(changePassword.rejected, (s,a)=>{ toast.error(a.payload || 'Password change failed') })
   }
