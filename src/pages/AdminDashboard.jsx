@@ -79,7 +79,12 @@ export default function Dashboard() {
 
       <div className="bg-white shadow-md rounded-lg p-5">
         <h3 className="text-lg font-medium text-gray-700 mb-4">Task Overview</h3>
-        <Bar data={chartData} />
+        <div style={{ height: '250px', width: '100%' }}>
+          <Bar
+            data={chartData}
+            options={{ responsive: true, maintainAspectRatio: false }}
+          />
+        </div>
       </div>
 
       <div className="bg-white shadow-md rounded-lg p-5">

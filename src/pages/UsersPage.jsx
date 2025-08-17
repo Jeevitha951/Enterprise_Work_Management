@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectUsers, createUser, deleteUser, toggleUserStatus } from '../store/usersSlice.js'
 
 export default function UsersPage() {
-  // Provide default empty object to avoid destructure errors
   const { users = [], currentUser = {} } = useSelector(selectUsers) || {}
   const dispatch = useDispatch()
 

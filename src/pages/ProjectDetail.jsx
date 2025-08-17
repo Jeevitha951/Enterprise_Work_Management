@@ -149,11 +149,26 @@ export default function ProjectDetail() {
                             </div>
                           )}
 
-                          <div className="absolute top-2 right-2 flex flex-col gap-1 text-xs">
-                            <button className="text-blue-600 hover:underline" onClick={() => openEditModal(t)}>Edit</button>
-                            <button className="text-red-600 hover:underline" onClick={() => handleDelete(t.id)}>Delete</button>
-                            <button className="text-green-600 hover:underline" onClick={() => handleAddComment(t.id)}>+ Comment</button>
-                            <label className="text-purple-600 hover:underline cursor-pointer">
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            <button
+                              className="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition text-xs"
+                              onClick={() => openEditModal(t)}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 transition text-xs"
+                              onClick={() => handleDelete(t.id)}
+                            >
+                              Delete
+                            </button>
+                            <button
+                              className="bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700 transition text-xs"
+                              onClick={() => handleAddComment(t.id)}
+                            >
+                              + Comment
+                            </button>
+                            <label className="bg-purple-600 text-white px-2 py-1 rounded hover:bg-purple-700 transition text-xs cursor-pointer">
                               + File
                               <input type="file" className="hidden" onChange={(e) => handleAddAttachment(t.id, e)} />
                             </label>

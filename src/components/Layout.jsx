@@ -19,7 +19,6 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-      {/* Sidebar */}
       <aside className="w-full md:w-60 p-6 bg-white dark:bg-gray-800 shadow-md md:shadow-none flex-shrink-0 flex flex-col justify-between">
         <div>
           <h1 className="text-2xl font-bold mb-2">E-WMS</h1>
@@ -59,8 +58,6 @@ export default function Layout() {
           </button>
         </div>
       </aside>
-
-      {/* Main Content */}
       <main className="flex-1 p-6">
         <Outlet />
       </main>

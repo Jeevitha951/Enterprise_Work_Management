@@ -32,7 +32,12 @@ export default function ReportsPage() {
 
       <div className="card p-4">
         <h3 className="font-medium mb-3">Tasks by Status</h3>
-        <Pie data={data} />
+        <div style={{ height: '250px', maxWidth: '100%', margin: '0 auto' }}>
+          <Pie
+            data={data}
+            options={{ responsive: true, maintainAspectRatio: false }}
+          />
+        </div>
       </div>
 
       <div className="card p-4">

@@ -36,7 +36,6 @@ export default function App() {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:projectId" element={<ProjectDetail />} />
 
-            {/* Admin-only access */}
             <Route element={<RoleGuard roles={['Admin']} />}>
               <Route path="/users" element={<UsersPage />} />
             </Route>
