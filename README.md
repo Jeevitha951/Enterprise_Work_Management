@@ -34,8 +34,8 @@ npm test
 
 ## Structure (major)
 src/
-  components/       # Layout, ThemeToggle
-  hooks/            # useBootstrapData
+ - components/       # Layout, ThemeToggle
+ - hooks/            # useBootstrapData
   pages/            # Login, Dashboard, Projects, ProjectDetail, Users, Reports, Settings
   routes/           # ProtectedRoute, RoleGuard
   store/            # auth, projects, tasks, users, notifications
