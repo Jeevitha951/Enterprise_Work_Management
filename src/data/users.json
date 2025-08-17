@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "Admin User", "email": "admin@example.com", "role": "Admin", "status": "Active", "lastActive": 1692268800000 },
+  { "id": 2, "name": "Manager User", "email": "manager@example.com", "role": "Manager", "status": "Active", "lastActive": 1692355200000 },
+  { "id": 3, "name": "Employee User", "email": "employee@example.com", "role": "Employee", "status": "Inactive", "lastActive": 1692441600000 }
+]

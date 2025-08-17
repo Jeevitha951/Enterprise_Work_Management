@@ -1,12 +1,9 @@
-import { createSlice, createAsyncThunk, nanoid } from '@reduxjs/toolkit'
-import { api } from '../utils/mockApi.js'
-
-// Async fetch users from mock API
-export const fetchUsers = createAsyncThunk('users/fetch', api.getUsers)
+import { createSlice, nanoid } from '@reduxjs/toolkit'
+import usersData from '../data/users.json' // import dummy data
 
 const slice = createSlice({
   name: 'users',
-  initialState: { users: [], status: 'idle', currentUser: null },  
+  initialState: { users: usersData, currentUser: null },  
   reducers: {
     // Login (set the current user in slice)
     setCurrentUser(state, action) {
@@ -67,15 +64,6 @@ const slice = createSlice({
         user.lastActive = Date.now()
       }
     }
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchUsers.pending, (s) => { s.status = 'loading' })
-      .addCase(fetchUsers.fulfilled, (s, a) => {
-        s.status = 'succeeded'
-        s.users = a.payload
-      })
-      .addCase(fetchUsers.rejected, (s) => { s.status = 'failed' })
   }
 })
 
